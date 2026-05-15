@@ -1,18 +1,19 @@
-// scraper.mjs
-// Detecting Rally Radar — daily sweep orchestrator
-// Runs each source, geocodes locations, dedupes, writes events.json
+// scraper.mjs (v2)
+// Daily sweep orchestrator with manual-geocode fallback
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { scrapeAll } from './sources.mjs';
+import { manualGeocode } from './manual-overrides.mjs';
 
 const HOME = { lat: 52.5489, lon: 0.0875, postcode: 'PE15 9HD' };
 const WINDOW_DAYS = 14;
 const MAX_MILES = 200;
-const CACHE_FILE = path.resolve(path.dirname(new URL(import.meta.url).pathname), 'cache.json');
-const OUT_FILE   = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'events.json');
 
-// ---------- Cache (geocoding + page hashes) ----------
+const SCRIPT_DIR = path.dirname(new URL(import.meta.url).pathname);
+const CACHE_FILE = path.resolve(SCRIPT_DIR, 'cache.json');
+const OUT_FILE   = path.resolve(SCRIPT_DIR, '..', 'events.json');
+const DIGEST_FILE = path.resolve(SCRIPT_DIR, 'digest.txt');
 
 async function loadCache() {
   try { return JSON.parse(await fs.readFile(CACHE_FILE, 'utf8')); }
@@ -21,8 +22,6 @@ async function loadCache() {
 async function saveCache(cache) {
   await fs.writeFile(CACHE_FILE, JSON.stringify(cache, null, 2));
 }
-
-// ---------- Geocoding ----------
 
 async function geocodePostcode(pc, cache) {
   const key = 'pc:' + pc.toUpperCase().replace(/\s+/g, '');
@@ -42,8 +41,6 @@ async function geocodePlace(name, cache) {
   if (!name) return null;
   const key = 'p:' + name.toLowerCase().replace(/\s+/g, '_');
   if (cache.geo[key]) return cache.geo[key];
-
-  // Polite Nominatim use: 1 req/sec, descriptive UA, countrycodes=gb
   await new Promise(r => setTimeout(r, 1100));
   try {
     const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(name + ', UK')}&countrycodes=gb&format=json&limit=1`;
@@ -59,8 +56,6 @@ async function geocodePlace(name, cache) {
   } catch { return null; }
 }
 
-// ---------- Distance ----------
-
 function haversine(lat1, lon1, lat2, lon2) {
   const R = 3958.8;
   const toRad = d => d * Math.PI / 180;
@@ -70,8 +65,6 @@ function haversine(lat1, lon1, lat2, lon2) {
   return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
 }
 
-// ---------- Dedup ----------
-
 function dedupe(events) {
   const out = [];
   const seen = new Map();
@@ -80,7 +73,6 @@ function dedupe(events) {
     const norm = e.title.toLowerCase().replace(/[^a-z0-9]+/g, '').slice(0, 24);
     const key = e.date + ':' + norm;
     if (seen.has(key)) {
-      // Merge — prefer entry with a URL
       const existing = seen.get(key);
       if (!existing.url && e.url) existing.url = e.url;
       if (!existing.location && e.location) existing.location = e.location;
@@ -92,8 +84,6 @@ function dedupe(events) {
   return out;
 }
 
-// ---------- Filter window ----------
-
 function inWindow(e) {
   const d = new Date(e.date + 'T00:00:00');
   const today = new Date(); today.setHours(0,0,0,0);
@@ -101,32 +91,50 @@ function inWindow(e) {
   return d >= today && d <= end;
 }
 
-// ---------- Main ----------
-
 async function main() {
-  console.log(`[${new Date().toISOString()}] Rally Radar sweep starting`);
+  console.log(`[${new Date().toISOString()}] Rally Radar sweep starting (v2)`);
 
   const cache = await loadCache();
   const raw = await scrapeAll({ cache });
 
   console.log(`Got ${raw.length} raw events across all sources`);
 
-  // Geocode
+  // Geocode in order: full postcode → place name → manual fallback (known venue / area / county)
   const geocoded = [];
   for (const e of raw) {
     if (e.lat && e.lon) { geocoded.push(e); continue; }
+
     let geo = null;
-    if (e.postcode) geo = await geocodePostcode(e.postcode, cache);
-    if (!geo && e.location) geo = await geocodePlace(e.location, cache);
-    if (geo) { e.lat = geo.lat; e.lon = geo.lon; geocoded.push(e); }
-    else {
-      console.warn(`  No geocode for: ${e.title} @ ${e.location || e.postcode || '???'}`);
-      // Keep without coords but distance will be omitted
+    let source = null;
+
+    if (e.postcode) {
+      geo = await geocodePostcode(e.postcode, cache);
+      if (geo) source = 'postcodes_io';
+    }
+    if (!geo && e.location) {
+      geo = await geocodePlace(e.location, cache);
+      if (geo) source = 'nominatim';
+    }
+    if (!geo) {
+      const manual = manualGeocode({ title: e.title, location: e.location, postcode: e.postcode });
+      if (manual) {
+        geo = { lat: manual.lat, lon: manual.lon };
+        source = manual.source;
+        if (manual.resolvedLocation && !e.location) e.location = manual.resolvedLocation;
+      }
+    }
+
+    if (geo) {
+      e.lat = geo.lat;
+      e.lon = geo.lon;
+      e.geocode_source = source;
       geocoded.push(e);
+    } else {
+      console.warn(`  No geocode: ${e.title.slice(0,60)} @ ${e.location || e.postcode || '???'}`);
     }
   }
 
-  // Distance + filter
+  // Distance + window filter
   const enriched = geocoded.map(e => ({
     ...e,
     distance: (e.lat && e.lon) ? haversine(HOME.lat, HOME.lon, e.lat, e.lon) : null
@@ -136,9 +144,8 @@ async function main() {
   const inDateWindow = inRange.filter(inWindow);
   const final = dedupe(inDateWindow).sort((a,b) => a.date.localeCompare(b.date));
 
-  console.log(`After geocode+dedupe: ${final.length} events in ${MAX_MILES}mi / ${WINDOW_DAYS}d window`);
+  console.log(`Final: ${final.length} events in ${MAX_MILES}mi / ${WINDOW_DAYS}d window`);
 
-  // Write events.json (the file the HTML viewer reads)
   const out = {
     generated: new Date().toISOString(),
     home: HOME,
@@ -152,9 +159,8 @@ async function main() {
   await fs.writeFile(OUT_FILE, JSON.stringify(out, null, 2));
   await saveCache(cache);
 
-  // Also write a digest.md for the email/whatsapp senders to read
   const digest = buildDigest(out);
-  await fs.writeFile(path.resolve(path.dirname(new URL(import.meta.url).pathname), 'digest.txt'), digest);
+  await fs.writeFile(DIGEST_FILE, digest);
 
   console.log('Done.');
 }
