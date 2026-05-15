@@ -358,6 +358,21 @@ button:hover, .btn:hover {
 }
 button.primary { background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%); color: var(--bg-deep); border: none; }
 button.primary:hover { box-shadow: 0 0 20px rgba(0, 229, 255, 0.7); }
+button:disabled, button.primary:disabled {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-dim);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+  transform: none;
+}
+button:disabled:hover, button.primary:disabled:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+  transform: none;
+}
 button.warn { background: rgba(255, 183, 77, 0.08); border-color: rgba(255, 183, 77, 0.35); color: var(--gold); }
 button.warn:hover { background: rgba(255, 183, 77, 0.2); border-color: var(--gold); }
 
@@ -669,9 +684,9 @@ footer a { color: var(--cyan); text-decoration: none; }
   <div class="fb-paste">
     <div class="panel-title">Manual Add — Paste a Facebook Post</div>
     <div class="hint">If a friend forwards you a dig announcement, paste it here. The app will pull a date, location and title where it can and add it to your local list (saved in this browser only).</div>
-    <textarea id="fbPaste" placeholder="Sun 18 May — Open dig nr Newark, NG24. £15 pp, all welcome. PM to book…"></textarea>
+    <textarea id="fbPaste" placeholder="↓ Paste a Facebook post or dig announcement here, then click Parse & Add →&#10;&#10;Example of what works:&#10;Sun 18 May — Open dig nr Newark, NG24 1AB. £15 pp, all welcome."></textarea>
     <div class="actions">
-      <button id="parsePaste" class="primary">+ Parse &amp; Add</button>
+      <button id="parsePaste" class="primary" disabled>+ Parse &amp; Add</button>
       <button id="clearManual" class="warn">Clear All Manual Entries</button>
     </div>
   </div>
@@ -904,7 +919,17 @@ function renderTable() {
 
 function renderMap() {
   if (!STATE.map) {
-    STATE.map = L.map('map', { zoomControl: true, attributionControl: true }).setView([CONFIG.HOME.lat, CONFIG.HOME.lon], 7);
+    STATE.map = L.map('map', {
+      zoomControl: false,           // hide the + / − buttons
+      attributionControl: true,
+      scrollWheelZoom: false,       // disable mouse wheel zoom
+      doubleClickZoom: false,       // disable double-click zoom
+      boxZoom: false,               // disable shift-drag zoom
+      keyboard: false,              // disable arrow-key pan
+      dragging: false,              // disable click-and-drag pan
+      touchZoom: false,             // disable pinch-zoom on touch
+      tap: false                    // disable tap handler (mobile)
+    }).setView([CONFIG.HOME.lat, CONFIG.HOME.lon], 7);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
       attribution: '© OpenStreetMap contributors'
@@ -942,8 +967,7 @@ function renderMap() {
     if (STATE._fitToRadius) {
       STATE.map.fitBounds(STATE.radiusCircle.getBounds(), {
         padding: [20, 20],
-        animate: true,
-        duration: 0.5
+        animate: false
       });
       STATE._fitToRadius = false;
     }
@@ -1134,6 +1158,7 @@ async function addPaste() {
   STATE.manualEvents.push(entry);
   localStorage.setItem('rr_manual', JSON.stringify(STATE.manualEvents));
   ta.value = '';
+  document.getElementById('parsePaste').disabled = true;
   render();
 }
 
@@ -1185,17 +1210,13 @@ function init() {
   const slider = document.getElementById('radiusSlider');
   slider.value = STATE.radius;
   document.getElementById('radiusValue').textContent = STATE.radius;
-  // input fires constantly during drag — fast updates, no map fit
+  // input fires constantly during drag — keep map in sync with slider
   slider.addEventListener('input', () => {
     STATE.radius = parseInt(slider.value);
     document.getElementById('radiusValue').textContent = STATE.radius;
     localStorage.setItem('rr_radius', STATE.radius);
-    render();
-  });
-  // change fires on release — this is when we re-fit the map
-  slider.addEventListener('change', () => {
     STATE._fitToRadius = true;
-    renderMap();
+    render();
   });
 
   document.getElementById('refreshBtn').addEventListener('click', loadEvents);
@@ -1204,6 +1225,13 @@ function init() {
   document.getElementById('exportCsv').addEventListener('click', exportCsv);
   document.getElementById('exportJson').addEventListener('click', exportJson);
   document.getElementById('parsePaste').addEventListener('click', addPaste);
+
+  // Toggle Parse & Add button based on textarea content
+  const pasteBox = document.getElementById('fbPaste');
+  const parseBtn = document.getElementById('parsePaste');
+  pasteBox.addEventListener('input', () => {
+    parseBtn.disabled = pasteBox.value.trim().length === 0;
+  });
   document.getElementById('clearManual').addEventListener('click', clearManual);
 
   document.querySelectorAll('.sort-btn').forEach(b => {
