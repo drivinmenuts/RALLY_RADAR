@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-15T15:51:42.283Z",
+  "generated": "2026-05-15T16:29:58.577Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -9,11 +9,10 @@
   "max_miles": 200,
   "sources_run": [
     "bookitzone",
-    "paulcee",
     "ukhfevent",
     "rodneycook"
   ],
-  "total_raw": 11,
+  "total_raw": 5,
   "total_in_range": 1,
   "events": [
     {
