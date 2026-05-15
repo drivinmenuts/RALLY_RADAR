@@ -616,6 +616,7 @@ footer a { color: var(--cyan); text-decoration: none; }
       </div>
       <div class="actions">
         <button class="primary" id="refreshBtn">⟳ Refresh Data</button>
+        <button id="clearEventsBtn" class="warn">⊘ Clear Events</button>
         <button id="exportIcs">📅 Export ICS</button>
         <button id="exportCsv">⇩ CSV</button>
         <button id="exportJson">⇩ JSON</button>
@@ -1109,6 +1110,17 @@ function clearManual() {
   render();
 }
 
+function clearEvents() {
+  // Visually blank the table and map. No confirmation — instant action.
+  // Manual entries and filter settings are preserved.
+  // The next "Refresh Data" click will repopulate from GitHub.
+  STATE.events = [];
+  STATE.manualEvents = [];
+  localStorage.removeItem('rr_manual');
+  STATE.lastUpdate = null;
+  render();
+}
+
 // ---------- Wire it up ----------
 
 function init() {
@@ -1135,6 +1147,7 @@ function init() {
   });
 
   document.getElementById('refreshBtn').addEventListener('click', loadEvents);
+  document.getElementById('clearEventsBtn').addEventListener('click', clearEvents);
   document.getElementById('exportIcs').addEventListener('click', exportIcs);
   document.getElementById('exportCsv').addEventListener('click', exportCsv);
   document.getElementById('exportJson').addEventListener('click', exportJson);
