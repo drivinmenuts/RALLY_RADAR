@@ -20,6 +20,7 @@ jobs:
       CALLMEBOT_PHONE: ${{ secrets.CALLMEBOT_PHONE }}
       CALLMEBOT_KEY:   ${{ secrets.CALLMEBOT_KEY }}
       WEB3FORMS_KEY:   ${{ secrets.WEB3FORMS_KEY }}
+      RESEND_API_KEY:  ${{ secrets.RESEND_API_KEY }}
       EMAIL_TO:        ${{ secrets.EMAIL_TO }}
       FB_COOKIE:       ${{ secrets.FB_COOKIE }}
 
@@ -60,6 +61,6 @@ jobs:
         if: env.CALLMEBOT_PHONE != '' && env.CALLMEBOT_KEY != ''
         run: node scraper/send-whatsapp.mjs
 
-      - name: Send Email digest (Web3Forms)
-        if: env.WEB3FORMS_KEY != '' && env.EMAIL_TO != ''
+      - name: Send Email digest (Resend)
+        if: env.RESEND_API_KEY != '' && env.EMAIL_TO != ''
         run: node scraper/send-email.mjs
