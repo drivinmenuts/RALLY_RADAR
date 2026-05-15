@@ -1,0 +1,35 @@
+{
+  "generated": "2026-05-15T07:00:00.000Z",
+  "home": { "lat": 52.5489, "lon": 0.0875, "postcode": "PE15 9HD" },
+  "window_days": 14,
+  "max_miles": 200,
+  "sources_run": ["ukhfevent", "bookitzone"],
+  "total_raw": 2,
+  "total_in_range": 2,
+  "events": [
+    {
+      "source": "ukhfevent",
+      "title": "UK History Finders Mega Weekender",
+      "date": "2026-05-22",
+      "location": "BA4, Shepton Mallet area, Somerset",
+      "postcode": "BA4",
+      "lat": 51.1898,
+      "lon": -2.5469,
+      "distance": 146,
+      "url": "https://ukhfevent.co.uk/2026-events-c-13/uk-history-finders-mega-weekender-22-24-may-2026-p-253",
+      "organiser": "UK History Finders"
+    },
+    {
+      "source": "bookitzone",
+      "title": "SMMDC Prestatyn Treasure Coast — 4-Day Bank Holiday Dig",
+      "date": "2026-05-21",
+      "location": "Gronant, Prestatyn, LL19 9TB",
+      "postcode": "LL19 9TB",
+      "lat": 53.3470,
+      "lon": -3.3590,
+      "distance": 154,
+      "url": "https://bookitzone.com/SMDCC/wNjFFX",
+      "organiser": "SMMDC"
+    }
+  ]
+}
