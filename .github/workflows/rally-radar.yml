@@ -1,0 +1,65 @@
+name: Rally Radar - Daily Sweep
+
+on:
+  schedule:
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rally-radar
+  cancel-in-progress: false
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CALLMEBOT_PHONE: ${{ secrets.CALLMEBOT_PHONE }}
+      CALLMEBOT_KEY:   ${{ secrets.CALLMEBOT_KEY }}
+      WEB3FORMS_KEY:   ${{ secrets.WEB3FORMS_KEY }}
+      EMAIL_TO:        ${{ secrets.EMAIL_TO }}
+      FB_COOKIE:       ${{ secrets.FB_COOKIE }}
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install scraper dependencies
+        working-directory: scraper
+        run: npm install
+
+      - name: Install Playwright browsers
+        working-directory: scraper
+        run: npx playwright install --with-deps chromium
+
+      - name: Run scraper
+        working-directory: scraper
+        run: node scraper.mjs
+
+      - name: Commit updated events.json
+        run: |
+          git config user.name  "rally-radar-bot"
+          git config user.email "rally-radar-bot@users.noreply.github.com"
+          git add events.json scraper/cache.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto: refresh events.json [skip ci]"
+            git push
+          fi
+
+      - name: Send WhatsApp digest (CallMeBot)
+        if: env.CALLMEBOT_PHONE != '' && env.CALLMEBOT_KEY != ''
+        run: node scraper/send-whatsapp.mjs
+
+      - name: Send Email digest (Web3Forms)
+        if: env.WEB3FORMS_KEY != '' && env.EMAIL_TO != ''
+        run: node scraper/send-email.mjs
