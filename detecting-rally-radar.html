@@ -475,6 +475,26 @@ tbody td { padding: 14px 16px; vertical-align: top; font-size: 14px; }
 }
 .cell-source .src-badge .dot { width: 6px; height: 6px; border-radius: 50%; }
 
+/* Manual entries — visually distinct */
+.manual-row {
+  background: rgba(255, 255, 255, 0.025) !important;
+  border-left: 3px solid #ffffff;
+}
+.manual-row:hover { background: rgba(255, 255, 255, 0.05) !important; }
+.manual-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5ff 100%);
+  color: #050818;
+  font-family: 'Orbitron', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
 .book-btn {
   padding: 6px 12px;
   font-size: 10px;
@@ -866,10 +886,11 @@ function renderTable() {
         ${events.map(e => {
           const s = getSource(e.source);
           const daways = daysAway(e.date);
+          const isManual = e.source === 'manual';
           return `
-            <tr>
+            <tr${isManual ? ' class="manual-row"' : ''}>
               <td class="cell-date">${fmtDate(e.date)}<small>${daways === 0 ? 'TODAY' : daways === 1 ? 'TOMORROW' : 'in ' + daways + 'd'}</small></td>
-              <td class="cell-title">${escapeHtml(e.title || 'Untitled')}${e.organiser ? `<small>${escapeHtml(e.organiser)}</small>` : ''}</td>
+              <td class="cell-title">${isManual ? '<span class="manual-tag">MANUAL</span> ' : ''}${escapeHtml(e.title || 'Untitled')}${e.organiser ? `<small>${escapeHtml(e.organiser)}</small>` : ''}</td>
               <td class="cell-loc">${escapeHtml(e.location || '—')}</td>
               <td class="cell-dist">${e.distance} mi</td>
               <td class="cell-source"><span class="src-badge"><span class="dot" style="background:${s.color}"></span>${s.label}</span></td>
@@ -899,6 +920,9 @@ function renderMap() {
     STATE.homeMarker = L.marker([CONFIG.HOME.lat, CONFIG.HOME.lon], { icon: homeIcon })
       .addTo(STATE.map)
       .bindPopup('<b>HOME</b><br>PE15 9HD<br>March, Cambridgeshire');
+
+    // First render: frame the radius
+    STATE._fitToRadius = true;
   }
 
   // Update radius circle
@@ -913,6 +937,16 @@ function renderMap() {
       fillOpacity: 0.04,
       dashArray: '6 6'
     }).addTo(STATE.map);
+
+    // Auto-fit map to the radius circle if requested
+    if (STATE._fitToRadius) {
+      STATE.map.fitBounds(STATE.radiusCircle.getBounds(), {
+        padding: [20, 20],
+        animate: true,
+        duration: 0.5
+      });
+      STATE._fitToRadius = false;
+    }
   }
 
   // Markers
@@ -1104,10 +1138,22 @@ async function addPaste() {
 }
 
 function clearManual() {
-  if (!confirm('Delete all manual entries from this browser?')) return;
+  const n = STATE.manualEvents.length;
+  if (n === 0) {
+    alert('No manual entries to clear.\n\nManual entries are added via the paste box below. They show in the table with a "MANUAL" badge.');
+    return;
+  }
+  if (!confirm(`Delete ${n} manual ${n === 1 ? 'entry' : 'entries'} from this browser?`)) return;
   STATE.manualEvents = [];
   localStorage.removeItem('rr_manual');
   render();
+  // Brief feedback
+  const btn = document.getElementById('clearManual');
+  if (btn) {
+    const orig = btn.textContent;
+    btn.textContent = `✓ Cleared ${n}`;
+    setTimeout(() => { btn.textContent = orig; }, 1800);
+  }
 }
 
 function clearEvents() {
@@ -1139,11 +1185,17 @@ function init() {
   const slider = document.getElementById('radiusSlider');
   slider.value = STATE.radius;
   document.getElementById('radiusValue').textContent = STATE.radius;
+  // input fires constantly during drag — fast updates, no map fit
   slider.addEventListener('input', () => {
     STATE.radius = parseInt(slider.value);
     document.getElementById('radiusValue').textContent = STATE.radius;
     localStorage.setItem('rr_radius', STATE.radius);
     render();
+  });
+  // change fires on release — this is when we re-fit the map
+  slider.addEventListener('change', () => {
+    STATE._fitToRadius = true;
+    renderMap();
   });
 
   document.getElementById('refreshBtn').addEventListener('click', loadEvents);
