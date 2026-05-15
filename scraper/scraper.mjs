@@ -9,8 +9,8 @@ import { scrapeAll } from './sources.mjs';
 const HOME = { lat: 52.5489, lon: 0.0875, postcode: 'PE15 9HD' };
 const WINDOW_DAYS = 14;
 const MAX_MILES = 200;
-const CACHE_FILE = path.resolve('scraper/cache.json');
-const OUT_FILE   = path.resolve('events.json');
+const CACHE_FILE = path.resolve(path.dirname(new URL(import.meta.url).pathname), 'cache.json');
+const OUT_FILE   = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'events.json');
 
 // ---------- Cache (geocoding + page hashes) ----------
 
@@ -154,7 +154,7 @@ async function main() {
 
   // Also write a digest.md for the email/whatsapp senders to read
   const digest = buildDigest(out);
-  await fs.writeFile(path.resolve('scraper/digest.txt'), digest);
+  await fs.writeFile(path.resolve(path.dirname(new URL(import.meta.url).pathname), 'digest.txt'), digest);
 
   console.log('Done.');
 }
