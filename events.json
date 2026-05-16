@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-15T18:32:26.605Z",
+  "generated": "2026-05-16T07:36:26.460Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -8,11 +8,10 @@
   "window_days": 14,
   "max_miles": 200,
   "sources_run": [
-    "bookitzone",
-    "ukhfevent"
+    "bookitzone"
   ],
-  "total_raw": 2,
-  "total_in_range": 2,
+  "total_raw": 1,
+  "total_in_range": 1,
   "events": [
     {
       "source": "bookitzone",
@@ -26,19 +25,6 @@
       "lon": -3.3514,
       "geocode_source": "postcodes_io",
       "distance": 153
-    },
-    {
-      "source": "ukhfevent",
-      "title": "Event UK HISTORY FINDERS MEGA WEEKENDER 22–24 MAY 2026 £1 £1",
-      "date": "2026-05-22",
-      "location": "BA4 area, Shepton Mallet, Somerset",
-      "postcode": null,
-      "url": "https://ukhfevent.co.uk/2026-events-c-13/uk-history-finders-mega-weekender-22-24-may-2026-p-253",
-      "organiser": "UK History Finders",
-      "lat": 51.19,
-      "lon": -2.547,
-      "geocode_source": "known_venue",
-      "distance": 146
     }
   ]
 }
