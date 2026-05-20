@@ -1,17 +1,20 @@
 {
-  "generated": "2026-05-20T08:10:20.765Z",
+  "generated": "2026-05-20T10:58:34.063Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
     "postcode": "PE15 9HD"
   },
   "window_days": 14,
-  "max_miles": 200,
+  "max_miles": 500,
   "sources_run": [
-    "bookitzone"
+    "bookitzone",
+    "ukhfevent",
+    "crawfords",
+    "eastofengland"
   ],
-  "total_raw": 1,
-  "total_in_range": 1,
+  "total_raw": 15,
+  "total_in_range": 3,
   "events": [
     {
       "source": "bookitzone",
@@ -25,6 +28,32 @@
       "lon": -3.3514,
       "geocode_source": "postcodes_io",
       "distance": 153
+    },
+    {
+      "source": "crawfords",
+      "title": "SMMDC Treasure Coast",
+      "date": "2026-05-21",
+      "location": "Gronant, Prestatyn, Denbighshire",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 53.347,
+      "lon": -3.359,
+      "geocode_source": "known_venue",
+      "distance": 154
+    },
+    {
+      "source": "ukhfevent",
+      "title": "Event UK HISTORY FINDERS MEGA WEEKENDER 22–24 MAY 2026 Only 10",
+      "date": "2026-05-22",
+      "location": "BA4 area, Shepton Mallet, Somerset",
+      "postcode": null,
+      "url": "https://ukhfevent.co.uk/2026-events-c-13/uk-history-finders-mega-weekender-22-24-may-2026-p-253",
+      "organiser": "UK History Finders",
+      "lat": 51.19,
+      "lon": -2.547,
+      "geocode_source": "known_venue",
+      "distance": 146
     }
   ]
 }
