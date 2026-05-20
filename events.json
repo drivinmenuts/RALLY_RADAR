@@ -1,11 +1,11 @@
 {
-  "generated": "2026-05-20T12:52:13.445Z",
+  "generated": "2026-05-20T14:21:34.539Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
     "postcode": "PE15 9HD"
   },
-  "window_days": 14,
+  "window_days": 90,
   "max_miles": 500,
   "sources_run": [
     "bookitzone",
@@ -15,7 +15,7 @@
     "eastofengland"
   ],
   "total_raw": 17,
-  "total_in_range": 5,
+  "total_in_range": 7,
   "events": [
     {
       "source": "bookitzone",
@@ -81,6 +81,32 @@
       "lon": -2.933,
       "geocode_source": "known_venue",
       "distance": 204
+    },
+    {
+      "source": "crawfords",
+      "title": "Celtic Heritage Summer Rally",
+      "date": "2026-07-26",
+      "location": "South Wales (Celtic Heritage Rally)",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 51.481,
+      "lon": -3.179,
+      "geocode_source": "known_venue",
+      "distance": 157
+    },
+    {
+      "source": "crawfords",
+      "title": "MINELAB 500 (Metal Detecting Weekender Unleash The Beast)",
+      "date": "2026-08-14",
+      "location": "Midlands (TBC)",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 52.5,
+      "lon": -1.5,
+      "geocode_source": "known_venue",
+      "distance": 67
     }
   ]
 }
