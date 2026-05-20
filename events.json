@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-20T11:55:47.355Z",
+  "generated": "2026-05-20T12:30:08.085Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -13,8 +13,8 @@
     "crawfords",
     "eastofengland"
   ],
-  "total_raw": 15,
-  "total_in_range": 3,
+  "total_raw": 16,
+  "total_in_range": 4,
   "events": [
     {
       "source": "bookitzone",
@@ -44,7 +44,7 @@
     },
     {
       "source": "ukhfevent",
-      "title": "Event UK HISTORY FINDERS MEGA WEEKENDER 22–24 MAY 2026 Only 10",
+      "title": "Event UK HISTORY FINDERS MEGA WEEKENDER 22–24 MAY 2026 Only 2",
       "date": "2026-05-22",
       "location": "BA4 area, Shepton Mallet, Somerset",
       "postcode": null,
@@ -54,6 +54,19 @@
       "lon": -2.547,
       "geocode_source": "known_venue",
       "distance": 146
+    },
+    {
+      "source": "crawfords",
+      "title": "Detectormania No-Frills Rally",
+      "date": "2026-05-22",
+      "location": "Carlisle, Cumbria",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 54.892,
+      "lon": -2.933,
+      "geocode_source": "known_venue",
+      "distance": 204
     }
   ]
 }
