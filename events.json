@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-20T12:30:08.085Z",
+  "generated": "2026-05-20T12:52:13.445Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -9,12 +9,13 @@
   "max_miles": 500,
   "sources_run": [
     "bookitzone",
+    "paulcee",
     "ukhfevent",
     "crawfords",
     "eastofengland"
   ],
-  "total_raw": 16,
-  "total_in_range": 4,
+  "total_raw": 17,
+  "total_in_range": 5,
   "events": [
     {
       "source": "bookitzone",
@@ -43,8 +44,21 @@
       "distance": 154
     },
     {
+      "source": "paulcee",
+      "title": "UK History Finders Mega Weekender 2026",
+      "date": "2026-05-22",
+      "location": "BA4 Area",
+      "postcode": "BA4",
+      "url": "https://www.paulcee.co.uk/detecting-rallies.php",
+      "organiser": null,
+      "lat": 51.19,
+      "lon": -2.547,
+      "geocode_source": "known_venue",
+      "distance": 146
+    },
+    {
       "source": "ukhfevent",
-      "title": "Event UK HISTORY FINDERS MEGA WEEKENDER 22–24 MAY 2026 Only 2",
+      "title": "Event UK HISTORY FINDERS MEGA WEEKENDER 22–24 MAY 2026 £1 £1",
       "date": "2026-05-22",
       "location": "BA4 area, Shepton Mallet, Somerset",
       "postcode": null,
