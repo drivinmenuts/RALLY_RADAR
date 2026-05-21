@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-20T14:21:34.539Z",
+  "generated": "2026-05-21T08:14:15.312Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -10,11 +10,10 @@
   "sources_run": [
     "bookitzone",
     "paulcee",
-    "ukhfevent",
     "crawfords",
     "eastofengland"
   ],
-  "total_raw": 17,
+  "total_raw": 15,
   "total_in_range": 7,
   "events": [
     {
@@ -51,19 +50,6 @@
       "postcode": "BA4",
       "url": "https://www.paulcee.co.uk/detecting-rallies.php",
       "organiser": null,
-      "lat": 51.19,
-      "lon": -2.547,
-      "geocode_source": "known_venue",
-      "distance": 146
-    },
-    {
-      "source": "ukhfevent",
-      "title": "Event UK HISTORY FINDERS MEGA WEEKENDER 22–24 MAY 2026 £1 £1",
-      "date": "2026-05-22",
-      "location": "BA4 area, Shepton Mallet, Somerset",
-      "postcode": null,
-      "url": "https://ukhfevent.co.uk/2026-events-c-13/uk-history-finders-mega-weekender-22-24-may-2026-p-253",
-      "organiser": "UK History Finders",
       "lat": 51.19,
       "lon": -2.547,
       "geocode_source": "known_venue",
@@ -107,6 +93,19 @@
       "lon": -1.5,
       "geocode_source": "known_venue",
       "distance": 67
+    },
+    {
+      "source": "crawfords",
+      "title": "Norfolk Metal Detecting Tours",
+      "date": "2026-08-19",
+      "location": "Norfolk",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 52.628,
+      "lon": 1.299,
+      "geocode_source": "known_venue",
+      "distance": 51
     }
   ]
 }
