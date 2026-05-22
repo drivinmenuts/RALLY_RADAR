@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-21T08:14:15.312Z",
+  "generated": "2026-05-22T08:08:24.033Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -10,38 +10,11 @@
   "sources_run": [
     "bookitzone",
     "paulcee",
-    "crawfords",
-    "eastofengland"
+    "crawfords"
   ],
-  "total_raw": 15,
-  "total_in_range": 7,
+  "total_raw": 14,
+  "total_in_range": 5,
   "events": [
-    {
-      "source": "bookitzone",
-      "title": "CANCELLED: SMMDC: The Prestatyn Treasure Coast - Four Day Bank Holiday Dig",
-      "date": "2026-05-21",
-      "location": "LL19 9TB",
-      "postcode": "LL19 9TB",
-      "url": null,
-      "organiser": null,
-      "lat": 53.340852,
-      "lon": -3.3514,
-      "geocode_source": "postcodes_io",
-      "distance": 153
-    },
-    {
-      "source": "crawfords",
-      "title": "SMMDC Treasure Coast",
-      "date": "2026-05-21",
-      "location": "Gronant, Prestatyn, Denbighshire",
-      "postcode": null,
-      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
-      "organiser": null,
-      "lat": 53.347,
-      "lon": -3.359,
-      "geocode_source": "known_venue",
-      "distance": 154
-    },
     {
       "source": "paulcee",
       "title": "UK History Finders Mega Weekender 2026",
