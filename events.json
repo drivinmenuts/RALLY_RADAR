@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-22T08:08:24.033Z",
+  "generated": "2026-05-23T07:49:18.223Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -10,37 +10,12 @@
   "sources_run": [
     "bookitzone",
     "paulcee",
-    "crawfords"
+    "crawfords",
+    "eastofengland"
   ],
-  "total_raw": 14,
-  "total_in_range": 5,
+  "total_raw": 15,
+  "total_in_range": 4,
   "events": [
-    {
-      "source": "paulcee",
-      "title": "UK History Finders Mega Weekender 2026",
-      "date": "2026-05-22",
-      "location": "BA4 Area",
-      "postcode": "BA4",
-      "url": "https://www.paulcee.co.uk/detecting-rallies.php",
-      "organiser": null,
-      "lat": 51.19,
-      "lon": -2.547,
-      "geocode_source": "known_venue",
-      "distance": 146
-    },
-    {
-      "source": "crawfords",
-      "title": "Detectormania No-Frills Rally",
-      "date": "2026-05-22",
-      "location": "Carlisle, Cumbria",
-      "postcode": null,
-      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
-      "organiser": null,
-      "lat": 54.892,
-      "lon": -2.933,
-      "geocode_source": "known_venue",
-      "distance": 204
-    },
     {
       "source": "crawfords",
       "title": "Celtic Heritage Summer Rally",
@@ -79,6 +54,19 @@
       "lon": 1.299,
       "geocode_source": "known_venue",
       "distance": 51
+    },
+    {
+      "source": "crawfords",
+      "title": "The Big Dig by Ifind/Sons of Archaeology",
+      "date": "2026-08-21",
+      "location": "Northamptonshire (Big Dig)",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 52.27,
+      "lon": -0.886,
+      "geocode_source": "known_venue",
+      "distance": 45
     }
   ]
 }
