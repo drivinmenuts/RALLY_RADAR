@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-29T08:18:43.873Z",
+  "generated": "2026-05-30T07:54:37.328Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -13,7 +13,7 @@
     "eastofengland"
   ],
   "total_raw": 12,
-  "total_in_range": 4,
+  "total_in_range": 6,
   "events": [
     {
       "source": "crawfords",
@@ -66,6 +66,32 @@
       "lon": -0.886,
       "geocode_source": "known_venue",
       "distance": 45
+    },
+    {
+      "source": "crawfords",
+      "title": "Hinton on the Green Weekender",
+      "date": "2026-08-28",
+      "location": "Hinton on the Green, Worcestershire",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 52.075,
+      "lon": -1.989,
+      "geocode_source": "known_venue",
+      "distance": 94
+    },
+    {
+      "source": "crawfords",
+      "title": "SES Melchbourne Weekender",
+      "date": "2026-08-28",
+      "location": "Melchbourne, Bedfordshire",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 52.232,
+      "lon": -0.448,
+      "geocode_source": "known_venue",
+      "distance": 31
     }
   ]
 }
