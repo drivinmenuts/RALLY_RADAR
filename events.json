@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-02T08:32:34.508Z",
+  "generated": "2026-06-03T08:39:27.243Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -13,7 +13,7 @@
     "eastofengland"
   ],
   "total_raw": 12,
-  "total_in_range": 6,
+  "total_in_range": 7,
   "events": [
     {
       "source": "crawfords",
@@ -92,6 +92,19 @@
       "lon": -0.448,
       "geocode_source": "known_venue",
       "distance": 31
+    },
+    {
+      "source": "crawfords",
+      "title": "Norfolk Metal Detecting Tours",
+      "date": "2026-09-01",
+      "location": "Norfolk",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 52.628,
+      "lon": 1.299,
+      "geocode_source": "known_venue",
+      "distance": 51
     }
   ]
 }
