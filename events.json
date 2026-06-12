@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-11T08:33:31.680Z",
+  "generated": "2026-06-12T08:31:04.468Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -9,9 +9,102 @@
   "max_miles": 500,
   "sources_run": [
     "paulcee",
+    "crawfords",
     "eastofengland"
   ],
-  "total_raw": 2,
-  "total_in_range": 0,
-  "events": []
+  "total_raw": 12,
+  "total_in_range": 7,
+  "events": [
+    {
+      "source": "crawfords",
+      "title": "Celtic Heritage Summer Rally",
+      "date": "2026-07-26",
+      "location": "South Wales (Celtic Heritage Rally)",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 51.481,
+      "lon": -3.179,
+      "geocode_source": "known_venue",
+      "distance": 157
+    },
+    {
+      "source": "crawfords",
+      "title": "MINELAB 500 (Metal Detecting Weekender Unleash The Beast)",
+      "date": "2026-08-14",
+      "location": "Midlands (TBC)",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 52.5,
+      "lon": -1.5,
+      "geocode_source": "known_venue",
+      "distance": 67
+    },
+    {
+      "source": "crawfords",
+      "title": "Norfolk Metal Detecting Tours",
+      "date": "2026-08-19",
+      "location": "Norfolk",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 52.628,
+      "lon": 1.299,
+      "geocode_source": "known_venue",
+      "distance": 51
+    },
+    {
+      "source": "crawfords",
+      "title": "The Big Dig by Ifind/Sons of Archaeology",
+      "date": "2026-08-21",
+      "location": "Northamptonshire (Big Dig)",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 52.27,
+      "lon": -0.886,
+      "geocode_source": "known_venue",
+      "distance": 45
+    },
+    {
+      "source": "crawfords",
+      "title": "Hinton on the Green Weekender",
+      "date": "2026-08-28",
+      "location": "Hinton on the Green, Worcestershire",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 52.075,
+      "lon": -1.989,
+      "geocode_source": "known_venue",
+      "distance": 94
+    },
+    {
+      "source": "crawfords",
+      "title": "SES Melchbourne Weekender",
+      "date": "2026-08-28",
+      "location": "Melchbourne, Bedfordshire",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 52.232,
+      "lon": -0.448,
+      "geocode_source": "known_venue",
+      "distance": 31
+    },
+    {
+      "source": "crawfords",
+      "title": "Norfolk Metal Detecting Tours",
+      "date": "2026-09-01",
+      "location": "Norfolk",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 52.628,
+      "lon": 1.299,
+      "geocode_source": "known_venue",
+      "distance": 51
+    }
+  ]
 }
