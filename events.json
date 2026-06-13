@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-12T08:31:04.468Z",
+  "generated": "2026-06-13T08:08:43.163Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -13,7 +13,7 @@
     "eastofengland"
   ],
   "total_raw": 12,
-  "total_in_range": 7,
+  "total_in_range": 8,
   "events": [
     {
       "source": "crawfords",
@@ -105,6 +105,19 @@
       "lon": 1.299,
       "geocode_source": "known_venue",
       "distance": 51
+    },
+    {
+      "source": "crawfords",
+      "title": "Detectormania 2026",
+      "date": "2026-09-11",
+      "location": "Carlisle, Cumbria",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 54.892,
+      "lon": -2.933,
+      "geocode_source": "known_venue",
+      "distance": 204
     }
   ]
 }
