@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-20T08:10:12.551Z",
+  "generated": "2026-06-21T08:31:27.959Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -13,7 +13,7 @@
     "eastofengland"
   ],
   "total_raw": 12,
-  "total_in_range": 9,
+  "total_in_range": 10,
   "events": [
     {
       "source": "crawfords",
@@ -131,6 +131,19 @@
       "lon": -2.933,
       "geocode_source": "known_venue",
       "distance": 204
+    },
+    {
+      "source": "crawfords",
+      "title": "Muddy Boots Weekender",
+      "date": "2026-09-19",
+      "location": "Midlands (Muddy Boots)",
+      "postcode": null,
+      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
+      "organiser": null,
+      "lat": 52.5,
+      "lon": -1.5,
+      "geocode_source": "known_venue",
+      "distance": 67
     }
   ]
 }
