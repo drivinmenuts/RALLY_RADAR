@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T07:49:26.631Z",
+  "generated": "2026-07-27T08:09:56.043Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -12,22 +12,9 @@
     "crawfords",
     "eastofengland"
   ],
-  "total_raw": 12,
-  "total_in_range": 10,
+  "total_raw": 11,
+  "total_in_range": 9,
   "events": [
-    {
-      "source": "crawfords",
-      "title": "Celtic Heritage Summer Rally",
-      "date": "2026-07-26",
-      "location": "South Wales (Celtic Heritage Rally)",
-      "postcode": null,
-      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
-      "organiser": null,
-      "lat": 51.481,
-      "lon": -3.179,
-      "geocode_source": "known_venue",
-      "distance": 157
-    },
     {
       "source": "crawfords",
       "title": "MINELAB 500 (Metal Detecting Weekender Unleash The Beast)",
