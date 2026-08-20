@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-18T07:31:15.333Z",
+  "generated": "2026-08-20T07:34:05.433Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -13,21 +13,8 @@
     "eastofengland"
   ],
   "total_raw": 10,
-  "total_in_range": 8,
+  "total_in_range": 7,
   "events": [
-    {
-      "source": "crawfords",
-      "title": "Norfolk Metal Detecting Tours",
-      "date": "2026-08-19",
-      "location": "Norfolk",
-      "postcode": null,
-      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
-      "organiser": null,
-      "lat": 52.628,
-      "lon": 1.299,
-      "geocode_source": "known_venue",
-      "distance": 51
-    },
     {
       "source": "crawfords",
       "title": "The Big Dig by Ifind/Sons of Archaeology",
