@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-21T07:36:25.040Z",
+  "generated": "2026-08-22T07:24:59.570Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -13,21 +13,8 @@
     "eastofengland"
   ],
   "total_raw": 10,
-  "total_in_range": 7,
+  "total_in_range": 6,
   "events": [
-    {
-      "source": "crawfords",
-      "title": "The Big Dig by Ifind/Sons of Archaeology",
-      "date": "2026-08-21",
-      "location": "Northamptonshire (Big Dig)",
-      "postcode": null,
-      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
-      "organiser": null,
-      "lat": 52.27,
-      "lon": -0.886,
-      "geocode_source": "known_venue",
-      "distance": 45
-    },
     {
       "source": "crawfords",
       "title": "Hinton on the Green Weekender",
