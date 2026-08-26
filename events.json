@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-25T07:37:23.932Z",
+  "generated": "2026-08-26T07:39:41.149Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -9,12 +9,26 @@
   "max_miles": 500,
   "sources_run": [
     "paulcee",
+    "ukhfevent",
     "crawfords",
     "eastofengland"
   ],
-  "total_raw": 9,
-  "total_in_range": 6,
+  "total_raw": 10,
+  "total_in_range": 7,
   "events": [
+    {
+      "source": "ukhfevent",
+      "title": "Compton Pauncefoot, Yeovil – Sunday 13.9.26 – Metal Detecting Dig",
+      "date": "2026-08-26",
+      "location": "BA22",
+      "postcode": "BA22",
+      "url": "https://ukhfevent.co.uk/2026-events-c-13/compton-pauncefoot-yeovil-sunday-13926-metal-detecting-dig-p-260",
+      "organiser": "UK History Finders",
+      "lat": 51.0018959,
+      "lon": -2.6830454,
+      "geocode_source": "nominatim",
+      "distance": 160
+    },
     {
       "source": "crawfords",
       "title": "Hinton on the Green Weekender",
