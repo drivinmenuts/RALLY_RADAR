@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-11T11:58:12.114Z",
+  "generated": "2026-09-12T11:24:46.504Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -13,21 +13,8 @@
     "eastofengland"
   ],
   "total_raw": 6,
-  "total_in_range": 3,
+  "total_in_range": 2,
   "events": [
-    {
-      "source": "crawfords",
-      "title": "Detectormania 2026",
-      "date": "2026-09-11",
-      "location": "Carlisle, Cumbria",
-      "postcode": null,
-      "url": "https://crawfordsmd.com/metal-detecting-rallies-events-2026",
-      "organiser": null,
-      "lat": 54.892,
-      "lon": -2.933,
-      "geocode_source": "known_venue",
-      "distance": 204
-    },
     {
       "source": "crawfords",
       "title": "East Durham Detectors, Hayton Village (WEEKENDER)",
