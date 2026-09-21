@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-20T11:56:45.666Z",
+  "generated": "2026-09-21T13:30:31.782Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -9,10 +9,9 @@
   "max_miles": 500,
   "sources_run": [
     "paulcee",
-    "crawfords",
     "eastofengland"
   ],
-  "total_raw": 4,
+  "total_raw": 2,
   "total_in_range": 0,
   "events": []
 }
