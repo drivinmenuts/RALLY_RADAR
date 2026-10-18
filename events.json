@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-17T11:17:56.874Z",
+  "generated": "2026-10-18T11:54:23.204Z",
   "home": {
     "lat": 52.5489,
     "lon": 0.0875,
@@ -9,37 +9,9 @@
   "max_miles": 500,
   "sources_run": [
     "paulcee",
-    "ukhfevent",
     "eastofengland"
   ],
-  "total_raw": 4,
-  "total_in_range": 2,
-  "events": [
-    {
-      "source": "ukhfevent",
-      "title": "UK History Finders Christmas Dig 2026 – Somerset | 13 December Sunday",
-      "date": "2026-12-13",
-      "location": "BA4 area, Shepton Mallet, Somerset",
-      "postcode": null,
-      "url": "https://ukhfevent.co.uk/2026-events-c-13/uk-history-finders-christmas-dig-2026-somerset-13-december-sunday-p-264",
-      "organiser": "UK History Finders",
-      "lat": 51.19,
-      "lon": -2.547,
-      "geocode_source": "known_venue",
-      "distance": 146
-    },
-    {
-      "source": "ukhfevent",
-      "title": "Event UK History Finders Christmas Dig 2026 – Somerset | 13 December Sunday £20 Instead of £20",
-      "date": "2026-12-13",
-      "location": "BA4 area, Shepton Mallet, Somerset",
-      "postcode": null,
-      "url": "https://ukhfevent.co.uk/2026-events-c-13/uk-history-finders-christmas-dig-2026-somerset-13-december-sunday-p-264",
-      "organiser": "UK History Finders",
-      "lat": 51.19,
-      "lon": -2.547,
-      "geocode_source": "known_venue",
-      "distance": 146
-    }
-  ]
+  "total_raw": 2,
+  "total_in_range": 0,
+  "events": []
 }
